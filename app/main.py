@@ -121,5 +121,4 @@ def get_fuel_price():
     return str(fuel_price_list[0])
 
 
-if __name__ == '__main__':
-    app.run()
+
