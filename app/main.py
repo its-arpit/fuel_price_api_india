@@ -60,11 +60,42 @@ def get_district_url(state):
 
 @app.route('/', methods=['GET'])
 def hello_world():
-    return '''<h1>Welcome In Fuel API</h1>
-                <h3>For State List: "/states"</h3>
-                <h3>For District List: "/state/district?state=Kerala"</h3>
-                <h3>For Price: "/price/state/district/?state=Kerala&district=Thrissur"</h3>
-                <p> Example: "/price/state/district/?state=Delhi&district=South%20Delhi"</p>'''
+    return '''<h1 style="text-align: center;">&nbsp;Fuel API</h1>
+<p style="text-align: center;">An API for the latest Diesel prices in India for all the major towns and cities. <br />It is a Flask-based lean app.</p>
+<table style="border-collapse: collapse; width: 59.62078651685394%; height: 50px; margin-left: auto; margin-right: auto;" border="1">
+<tbody>
+<tr>
+<td style="width: 9.778641701047292%;">1</td>
+<td style="width: 21.354317100450842%;">List of States</td>
+<td style="width: 68.86704119850188%;">/states</td>
+</tr>
+<tr>
+<td style="width: 9.778641701047292%;">2</td>
+<td style="width: 21.354317100450842%;">List of Districts</td>
+<td style="width: 68.86704119850188%;">/state/district?state=Your%20State</td>
+</tr>
+<tr>
+<td style="width: 9.778641701047292%;">3</td>
+<td style="width: 21.354317100450842%;">Diesel Price for District</td>
+<td style="width: 68.86704119850188%;">/price/state/district?state=Your%20State&amp;district=Your%20District</td>
+</tr>
+</tbody>
+</table>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;"><a href="https://github.com/its-arpit/fuel_price_api_india/">Github</a>&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">Made With ❤️&nbsp;by <a href="https://www.linkedin.com/in/aarpitk/">Arpit</a></p>'''
 
 
 @app.route('/states', methods=['GET'])
@@ -121,4 +152,6 @@ def get_fuel_price():
     return str(fuel_price_list[0])
 
 
-
+@app.errorhandler(404)
+def page_not_found(e):
+    return "<h1>404</h1><p>The resource could not be found.</p>", 404
