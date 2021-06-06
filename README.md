@@ -1,4 +1,4 @@
-fuel_price_api_india [link]https://fuel-api-india.herokuapp.com[link]
+Fuel Price API India 
 =============
 
 An API for the latest fuel prices in India for all the major towns and cities. 
