@@ -64,7 +64,7 @@ def api_states():
 
 @app.route('/state/district', methods=['GET'])
 def get_district_list():
-    pdb.set_trace()
+    #pdb.set_trace()
     if 'state' in request.args:
         state = str(request.args['state'])
     else:
@@ -83,7 +83,7 @@ def get_district_list():
 
 @app.route('/price/state/district/', methods=['GET'])
 def get_fuel_price():
-    pdb.set_trace()
+    #pdb.set_trace()
     if 'state' in request.args:
         state = str(request.args['state'])
     else:
