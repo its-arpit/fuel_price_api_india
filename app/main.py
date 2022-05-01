@@ -8,6 +8,16 @@ from urls import *
 
 app = Flask(__name__)
 
+def _build_cors_preflight_response():
+    response = make_response()
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    response.headers.add('Access-Control-Allow-Headers', "*")
+    response.headers.add('Access-Control-Allow-Methods', "*")
+    return response
+
+def _corsify_actual_response(response):
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
 
 @app.route('/', methods=['GET'])
 def hello_world():
@@ -59,7 +69,7 @@ def api_states():
     state = {}
     for key in states_p:
         state[key] = key
-    return jsonify(state)
+    return _corsify_actual_response(jsonify(state))
 
 
 @app.route('/state/district', methods=['GET'])
@@ -78,7 +88,7 @@ def get_district_list():
         for col in row.find_all('td'):
             if col.a in col:
                 district[col.text] = col.text
-    return jsonify(district)
+    return _corsify_actual_response(jsonify(district))
 
 
 @app.route('/price/state/district/', methods=['GET'])
@@ -111,7 +121,7 @@ def get_fuel_price():
                 except:
                     pass
 
-    return str(fuel_price_list[0])
+    return _corsify_actual_response(jsonify(str(fuel_price_list[0])))
 
 
 @app.errorhandler(404)
